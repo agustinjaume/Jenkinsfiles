@@ -19,8 +19,10 @@ pipeline {
     stage('Run maven') {
       steps {
         echo 'Hello World'
+        sh '''
         ls -la
         pwd
+        '''
       }
     }
   }
