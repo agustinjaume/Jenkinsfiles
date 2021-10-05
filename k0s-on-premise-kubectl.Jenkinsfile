@@ -16,7 +16,7 @@ pipeline {
         pwd
         '''
         withCredentials([file(credentialsId: 'kubeconfig-105', variable: 'FILE')]) {
-           sh 'use $FILE'
+           sh 'echo $FILE'
         } // Credential
       } //Steps
     } //stage
