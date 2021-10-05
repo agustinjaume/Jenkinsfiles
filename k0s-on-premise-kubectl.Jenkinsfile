@@ -18,7 +18,8 @@ pipeline {
         '''
         withCredentials([file(credentialsId: 'kubeconfig-105', variable: 'FILE')]) {
            sh 'use $FILE'
-        }
-      }
-    }
-  }
+        } // Credential
+      } //Steps
+    } //stage
+  } //stages
+} // pipeline
