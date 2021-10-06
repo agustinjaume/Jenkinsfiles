@@ -20,9 +20,7 @@ pipeline {
            echo $FILE
            echo $FILE > kubeconfig.yaml
            cat kubeconfig.yaml           
-           '''
-           
-           
+           '''           
         } // Credential
       } //Steps
     } //stage
