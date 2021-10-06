@@ -8,7 +8,8 @@ pipeline {
     }
   }
   stages {
-    stage('Run maven') {
+    stage('Run with node docker') {
+    container('docker') {
       steps {
         echo 'Hello World'
         sh '''
@@ -23,6 +24,7 @@ pipeline {
            '''           
         } // Credential
       } //Steps
+    }  // container
     } //stage
   } //stages
 } // pipeline
