@@ -16,7 +16,14 @@ pipeline {
         pwd
         '''
         withCredentials([file(credentialsId: 'kubeconfig-105', variable: 'FILE')]) {
-           sh 'echo $FILE'
+           sh '''
+           echo $FILE
+           $FILE > kubeconfig.yaml
+           cat kubeconfig.yaml
+           
+           '''
+           
+           
         } // Credential
       } //Steps
     } //stage
