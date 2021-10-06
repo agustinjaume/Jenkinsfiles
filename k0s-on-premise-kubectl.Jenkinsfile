@@ -8,9 +8,9 @@ pipeline {
     }
   }
   stages {
-    stage('Run with node docker') {
-    container('docker') {
+    stage('Run with node docker') {    
       steps {
+      container('docker') {
         echo 'Hello World'
         sh '''
         ls -la
@@ -23,8 +23,8 @@ pipeline {
            cat kubeconfig.yaml           
            '''           
         } // Credential
+      }  // container
       } //Steps
-    }  // container
     } //stage
   } //stages
 } // pipeline
