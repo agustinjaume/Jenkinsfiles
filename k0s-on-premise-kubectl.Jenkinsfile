@@ -16,11 +16,10 @@ pipeline {
         pwd
         '''
         withCredentials([file(credentialsId: 'kubeconfig-105', variable: 'FILE')]) {
-           sh '''
-           echo $FILE
-           $FILE > kubeconfig.yaml
-           cat kubeconfig.yaml
-           
+           sh '''#!/bin/sh
+           echo '$FILE'
+           '$FILE' > kubeconfig.yaml
+           cat kubeconfig.yaml           
            '''
            
            
