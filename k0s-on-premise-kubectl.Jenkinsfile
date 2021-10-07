@@ -12,15 +12,15 @@ pipeline {
       steps {
       container('docker') {
         echo 'Hello World'
+        sh '''#!/bin/sh
+        ls -la
+        pwd
         apt update
         apt install -y curl nano net-tools
         apt install -y supervisor
         curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.20.1/bin/linux/amd64/kubectl \
         && chmod +x ./kubectl \
         && mv ./kubectl /usr/local/bin/kubectl
-        sh '''
-        ls -la
-        pwd
         '''
         withCredentials([file(credentialsId: 'kubeconfig-105', variable: 'FILE')]) {
            sh '''#!/bin/sh
