@@ -16,8 +16,8 @@ pipeline {
         ls -la
         pwd
         apk update
-        apk add -y curl nano net-tools
-        apk add -y supervisor
+        apk add  curl nano net-tools
+        apk add supervisor
         curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.20.1/bin/linux/amd64/kubectl \
         && chmod +x ./kubectl \
         && mv ./kubectl /usr/local/bin/kubectl
