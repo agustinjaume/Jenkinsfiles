@@ -24,12 +24,12 @@ pipeline {
         '''
         withCredentials([file(credentialsId: 'kubeconfig-105', variable: 'FILE')]) {
            sh '''#!/bin/sh
-           env
-            // echo $FILE
+           // echo $FILE
            $FILE > kubeconfig.yaml
            cat kubeconfig.yaml   
            export KUBECONFIG=$FILE
            kubectl get all
+           env
            '''           
         } // Credential
       }  // container
