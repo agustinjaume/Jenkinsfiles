@@ -18,8 +18,9 @@ pipeline {
         '''
         withCredentials([file(credentialsId: 'kubeconfig-105', variable: 'FILE')]) {
            sh '''#!/bin/sh
-           echo '$FILE'
-           cp '$FILE' kubeconfig.yaml
+           env
+           echo $FILE
+           $FILE > kubeconfig.yaml
            cat kubeconfig.yaml           
            '''           
         } // Credential
