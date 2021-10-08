@@ -29,6 +29,8 @@ pipeline {
            cat kubeconfig.yaml   
            export KUBECONFIG=$FILE
            kubectl get all
+           kubectl apply -fapp-1-nginx.yaml 
+           kubectl get pod --all-namespaces
            env
            '''           
         } // Credential
