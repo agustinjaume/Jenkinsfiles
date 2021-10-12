@@ -4,8 +4,7 @@ metadata:
   name: app-ingress
 spec:
   rules:
-  - host: 192.168.1.105
-    http:
+   - http:
       paths:
       - path: /app1
         pathType: Prefix
