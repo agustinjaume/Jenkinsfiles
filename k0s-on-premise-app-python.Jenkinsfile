@@ -32,6 +32,7 @@ pipeline {
            kubectl apply -f app-1-nginx.yaml 
            kubectl get pod --all-namespaces
            kubectl apply -f ingress.yaml
+           echo "kubectl apply -f ingress.yaml"
            kubectl get svc --all-namespaces
            env
            '''           
