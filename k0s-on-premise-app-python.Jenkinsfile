@@ -33,7 +33,7 @@ pipeline {
            kubectl get pod --all-namespaces
            kubectl apply -f ingress.yaml
            echo "kubectl apply -f ingress.yaml"
-           kubectl get svc --all-namespaces
+           kubectl get ingress
            env
            '''           
         } // Credential
