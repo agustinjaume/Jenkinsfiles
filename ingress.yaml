@@ -1,0 +1,21 @@
+kind: Ingress
+metadata:
+  name: front-ingress
+spec:
+  backend:
+    serviceName: ebdn
+    servicePort: 8082
+  rules:
+  - host: 192.168.1.105  
+    http:
+      paths:
+      - backend:
+          serviceName: nginx-deployment
+          servicePort: 30003
+  - host: cloudconsulting.es
+    http:
+      paths:
+      - path: /*
+        backend:
+          serviceName: cloud
+          servicePort: 8082
