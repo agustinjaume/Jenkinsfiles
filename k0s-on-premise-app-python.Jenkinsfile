@@ -31,6 +31,8 @@ pipeline {
            kubectl get all
            kubectl apply -f app-1-nginx.yaml 
            kubectl get pod --all-namespaces
+           kubectl apply -f app-1-service.yaml
+           kubectl get svc --all-namespaces
            env
            '''           
         } // Credential
