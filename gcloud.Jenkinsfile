@@ -17,10 +17,18 @@ pipeline {
         ls -la
         pwd
         apk update
-        apk add  curl nano net-tools bash
+        apk add  curl nano net-tools bash wget
         apk add supervisor
-        curl -sSL https://sdk.cloud.google.com | bash
-        PATH $PATH:/root/google-cloud-sdk/bin
+        export CLOUD_SDK_VERSION=308.0.0
+        PATH /google-cloud-sdk/bin:$PATH
+        apk --no-cache add \
+        && wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${CLOUD_SDK_VERSION}-linux-x86_64.tar.gz && \
+        tar xzf google-cloud-sdk-${CLOUD_SDK_VERSION}-linux-x86_64.tar.gz && \
+        rm google-cloud-sdk-${CLOUD_SDK_VERSION}-linux-x86_64.tar.gz && \
+        ln -s /lib /lib64 && \
+        gcloud config set core/disable_usage_reporting true && \
+        gcloud --version
+        env
 
         '''
         withCredentials([file(credentialsId: 'secret-service-account-gcp', variable: 'FILE')]) {
