@@ -17,7 +17,7 @@ pipeline {
         ls -la
         pwd
         apk update
-        apk add  curl nano net-tools python bash
+        apk add  curl nano net-tools bash
         apk add supervisor
         curl -sSL https://sdk.cloud.google.com | bash
         PATH $PATH:/root/google-cloud-sdk/bin
