@@ -10,9 +10,10 @@ pipeline {
   stages {
     stage('Run with node docker') {    
       steps {
-      container('docker') {
+      container('google-cloud-sdk-alpine') {
         echo '---------------------------------------------------------------------------'
         echo 'Hello World with google Cloud'
+
         sh '''#!/bin/sh
         ls -la
         pwd
@@ -21,17 +22,14 @@ pipeline {
         apk add supervisor
         echo '---------------------------------------------------------------------------'
         echo 'google Cloud Version'
-        gcloud --version
+        gcloud version
         env
-
         '''
         withCredentials([file(credentialsId: 'secret-service-account-gcp', variable: 'FILE')]) {
            sh '''#!/bin/sh
            echo '---------------------------------------------------------------------------'
-           // echo $FILE
            $FILE > kubeconfig.yaml
            cat kubeconfig.yaml   
-           env
            '''           
         } // Credential
       }  // container
