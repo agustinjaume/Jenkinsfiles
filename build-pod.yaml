@@ -18,3 +18,13 @@ spec:
     env:
       - name: DOCKER_TLS_CERTDIR
         value: ""
+  - name: google-cloud-sdk-alpine
+    image:  google/cloud-sdk:alpine  
+    command:
+    - sleep
+    args:
+    - 99d
+    env:
+      - name: DOCKER_HOST
+        value: tcp://localhost:2375
+
