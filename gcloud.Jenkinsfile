@@ -11,19 +11,21 @@ pipeline {
     stage('Run with node docker') {    
       steps {
       container('docker') {
+        echo '---------------------------------------------------------------------------'
         echo 'Hello World with google Cloud'
         sh '''#!/bin/sh
         ls -la
         pwd
         apk update
-        apk add  curl nano net-tools python which bash
+        apk add  curl nano net-tools python bash
         apk add supervisor
         curl -sSL https://sdk.cloud.google.com | bash
-        ENV PATH $PATH:/root/google-cloud-sdk/bin
+        PATH $PATH:/root/google-cloud-sdk/bin
 
         '''
         withCredentials([file(credentialsId: 'secret-service-account-gcp', variable: 'FILE')]) {
            sh '''#!/bin/sh
+           echo '---------------------------------------------------------------------------'
            // echo $FILE
            $FILE > kubeconfig.yaml
            cat kubeconfig.yaml   
