@@ -31,7 +31,7 @@ pipeline {
            echo $FILE > config.json
            cat config.json   
            export GOOGLE_APPLICATION_CREDENTIALS=$FILE
-           gcloud init
+           gcloud auth login
            gcloud projects list
            echo '---------------------------------------------------------------------------'
            '''           
