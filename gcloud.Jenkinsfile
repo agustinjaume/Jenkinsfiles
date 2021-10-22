@@ -32,7 +32,7 @@ pipeline {
            cat config.json   
            export GOOGLE_APPLICATION_CREDENTIALS=$FILE
            gcloud auth activate-service-account  sa-jenkins@project-ideasextraordinarias.iam.gserviceaccount.com --key-file=$FILE
-           gcloud config set project 530117807237
+           gcloud config set project project-ideasextraordinarias
            echo '---------------------------------------------------------------------------'
            gsutil ls
            echo '---------------------------------------------------------------------------'
