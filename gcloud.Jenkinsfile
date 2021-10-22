@@ -28,8 +28,12 @@ pipeline {
         withCredentials([file(credentialsId: 'secret-service-account-gcp', variable: 'FILE')]) {
            sh '''#!/bin/sh
            echo '---------------------------------------------------------------------------'
-           $FILE > kubeconfig.yaml
-           cat kubeconfig.yaml   
+           echo $FILE > config.json
+           cat config.json   
+           export GOOGLE_APPLICATION_CREDENTIALS=$FILE
+           gcloud init
+           gcloud projects list
+           echo '---------------------------------------------------------------------------'
            '''           
         } // Credential
       }  // container
